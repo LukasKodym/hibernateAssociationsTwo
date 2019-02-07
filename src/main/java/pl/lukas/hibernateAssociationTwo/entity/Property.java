@@ -1,8 +1,4 @@
 package pl.lukas.hibernateAssociationTwo.entity;
-
-
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +20,7 @@ public class Property {
     public Property() {
     }
 
-    public Property(Integer idProperty, String city, Integer roomNumber) {
+    public Property(String city, Integer roomNumber) {
         this.city = city;
         this.roomNumber = roomNumber;
     }
