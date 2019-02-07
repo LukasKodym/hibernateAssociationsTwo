@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hibernateAssociations" />
         <module name="hibernateAssociationTwo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hibernateAssociations" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
