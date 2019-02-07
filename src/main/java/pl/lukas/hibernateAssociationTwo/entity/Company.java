@@ -1,6 +1,8 @@
 package pl.lukas.hibernateAssociationTwo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -18,6 +20,8 @@ public class Company {
     @OneToOne(cascade = CascadeType.ALL) // PERSIST - zapis, REMOVE - usuwanie
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
+    @OneToMany(mappedBy = "company", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Property> properties;
 
     public Company() {
     }
@@ -57,6 +61,22 @@ public class Company {
 
     public void setCompanyDetail(CompanyDetail companyDetail) {
         this.companyDetail = companyDetail;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public void addProperty(Property property){
+        if (properties == null){
+            properties = new ArrayList<>();
+        }
+        properties.add(property);
+        property.setCompany(this);
     }
 
     @Override
